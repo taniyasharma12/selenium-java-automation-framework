@@ -46,6 +46,22 @@
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <groups>smoke</groups>
+                    <systemPropertyVariables>
+                        <browser>chrome</browser>
+                        <url>https://the-internet.herokuapp.com/login</url>
+                        <retryCount>1</retryCount>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

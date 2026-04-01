@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/hp/IdeaProjects/selenium-java-automation-framework/src/test/java/com/selenium/java/automation/framework"><classes><class name="com.selenium.java.automation.framework.LoginTest"><methods><include name="loginTests"/></methods></class></classes></test></suite>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="utils.CustomListeners"/>
+    </listeners>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/hp/IdeaProjects/selenium-java-automation-framework/src/test/java/com/selenium/java/automation/framework">
+        <groups>
+            <run>
+                <include name="smoke" />
+                <exclude name="regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.selenium.java.automation.framework.LoginTest">
+                <methods>
+                    <include name="loginTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
