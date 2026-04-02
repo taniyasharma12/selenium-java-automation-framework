@@ -12,7 +12,7 @@ public class BaseTest {
     protected ConfigReader configReader;
 
     // runs before each test method
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void baseSetup() throws Exception {
 
         // initialize config reader to get browser and URL
@@ -26,7 +26,7 @@ public class BaseTest {
     }
 
     // runs after each test method
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
 
         // close the driver and clean up
@@ -35,6 +35,7 @@ public class BaseTest {
 
     // helper method to get driver easily from test classes
     protected WebDriver getDriver() {
+
         return DriverManager.getDriver();
     }
 }
