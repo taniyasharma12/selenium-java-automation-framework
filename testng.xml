@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="methods" thread-count="2">
+
+<suite name="All Test Suite" parallel="false">
+
     <listeners>
         <listener class-name="utils.CustomListeners"/>
     </listeners>
-    <test verbose="2" preserve-order="true"
-          name="C:/Users/hp/IdeaProjects/selenium-java-automation-framework/src/test/java/com/selenium/java/automation/framework">
+
+    <test name="Test Execution" verbose="2" preserve-order="true">
+
+        <!-- ✅ Groups controlled by Maven/Jenkins -->
         <groups>
             <run>
-                <include name="smoke" />
-                <exclude name="regression" />
+                <include name="${groups}"/>
             </run>
         </groups>
+
         <classes>
-            <class name="com.selenium.java.automation.framework.LoginTest">
-                <methods>
-                    <include name="loginTests"/>
-                </methods>
-            </class>
+            <class name="com.selenium.java.automation.framework.LoginTest"/>
         </classes>
+
     </test>
+
 </suite>

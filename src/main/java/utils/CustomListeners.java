@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-public class CustomListeners implements ITestListener, IRetryAnalyzer, IAnnotationTransformer {
+public class CustomListeners implements ITestListener, IAnnotationTransformer {
 
     @Override
     public void onStart(ITestContext context) {
@@ -61,19 +61,8 @@ public class CustomListeners implements ITestListener, IRetryAnalyzer, IAnnotati
         }
     }
 
-    int retryCount=0;
-    int maxCount=1;
-    @Override
-    public boolean retry(ITestResult result) {
-        if(retryCount<maxCount){
-            retryCount++;
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-        annotation.setRetryAnalyzer(CustomListeners.class);
+        annotation.setRetryAnalyzer(RetryAnalyzer.class);
     }
 }
