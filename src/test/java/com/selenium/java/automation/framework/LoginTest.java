@@ -8,8 +8,8 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
-    @Author(name= "Taniya Sharma")
-    @Test(testName = "Validate Login flow using %s ", dataProvider = "loginData")
+    @Author(name = "Taniya Sharma")
+    @Test(testName = "Validate Login flow using %s ", dataProvider = "loginData", groups = "smoke")
     public void loginTests(String type, String username, String password) {
 
         // initialize LoginPage object to access page actions
