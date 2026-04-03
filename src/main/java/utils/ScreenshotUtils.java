@@ -18,20 +18,18 @@ public class ScreenshotUtils {
 
         WebDriver driver = DriverManager.getDriver();
         String screenshotDir = "extent-output/screenshots/";
-        new File(screenshotDir).mkdirs(); // Ensure directory exists
+        new File(screenshotDir).mkdirs();
 
         String fileName = result.getName() + "_status" + result.getStatus() + "_" + result.getStartMillis() + ".png";
         String fullPath = screenshotDir + fileName;
 
         if (driver != null) {
             File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            try {
-                FileUtils.copyFile(file, new File(fullPath));
-            } catch (IOException e) {
-                throw new IOException(e);
-            }
+            FileUtils.copyFile(file, new File(fullPath));
         }
-        return fullPath; //return full path to screenshot file
+
+        // Return **relative path from the report** so preview works
+        return "screenshots/" + fileName;
     }
 }
 
