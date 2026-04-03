@@ -26,13 +26,9 @@ public class CustomListeners implements ITestListener, IAnnotationTransformer {
     @Override
     public void onTestStart(ITestResult result) {
 
-        String testName = result.getMethod().getDescription();
+        String testName = result.getMethod().getMethodName();
 
-        if (testName == null || testName.trim().isEmpty()) {
-            testName = result.getMethod().getMethodName();
-        }
-
-        // Add DataProvider parameters
+        // Add DataProvider parameters if available
         Object[] params = result.getParameters();
         if (params.length > 0) {
             testName += " - " + Arrays.toString(params);
@@ -40,11 +36,8 @@ public class CustomListeners implements ITestListener, IAnnotationTransformer {
 
         ExtentUtils.createTest(testName);
 
-        Author author = result.getMethod()
-                .getConstructorOrMethod()
-                .getMethod()
-                .getAnnotation(Author.class);
-
+        // Add author if annotation exists
+        Author author = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Author.class);
         if (author != null) {
             ExtentUtils.addAuthors(author.name());
         }

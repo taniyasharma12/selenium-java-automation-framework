@@ -18,6 +18,7 @@ public class ScreenshotUtils {
 
         WebDriver driver = DriverManager.getDriver();
         String screenshotDir = "extent-output/screenshots/";
+        new File(screenshotDir).mkdirs(); // Ensure directory exists
 
         String fileName = result.getName() + "_status" + result.getStatus() + "_" + result.getStartMillis() + ".png";
         String fullPath = screenshotDir + fileName;
@@ -27,13 +28,10 @@ public class ScreenshotUtils {
             try {
                 FileUtils.copyFile(file, new File(fullPath));
             } catch (IOException e) {
-
                 throw new IOException(e);
             }
-
-            ExtentUtils.addScreenshotFromPath(fullPath);
         }
-        return screenshotDir;
+        return fullPath; //return full path to screenshot file
     }
 }
 

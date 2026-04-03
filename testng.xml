@@ -18,6 +18,10 @@
 
         <classes>
             <class name="com.selenium.java.automation.framework.LoginTest"/>
+            <class name="com.selenium.java.automation.framework.ActionsTest"/>
+            <class name="com.selenium.java.automation.framework.AlertsTest"/>
+            <class name="com.selenium.java.automation.framework.DropdownTest"/>
+            <class name="com.selenium.java.automation.framework.FileUploadTest"/>
         </classes>
 
     </test>
