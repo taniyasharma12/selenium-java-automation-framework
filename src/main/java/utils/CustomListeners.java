@@ -7,6 +7,7 @@ import org.testng.annotations.ITestAnnotation;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class CustomListeners implements ITestListener, IAnnotationTransformer {
 
@@ -21,14 +22,23 @@ public class CustomListeners implements ITestListener, IAnnotationTransformer {
         }
 
     }
+
     @Override
     public void onTestStart(ITestResult result) {
 
-        ExtentUtils.createTest(
-                result.getMethod().getDescription() != null
-                        ? result.getMethod().getDescription()
-                        : result.getMethod().getMethodName()
-        );
+        String testName = result.getMethod().getDescription();
+
+        if (testName == null || testName.trim().isEmpty()) {
+            testName = result.getMethod().getMethodName();
+        }
+
+        // Add DataProvider parameters
+        Object[] params = result.getParameters();
+        if (params.length > 0) {
+            testName += " - " + Arrays.toString(params);
+        }
+
+        ExtentUtils.createTest(testName);
 
         Author author = result.getMethod()
                 .getConstructorOrMethod()
