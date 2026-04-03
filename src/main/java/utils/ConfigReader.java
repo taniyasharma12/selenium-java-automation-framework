@@ -26,4 +26,14 @@ public class ConfigReader {
         return properties.getProperty("browser", "chrome");
 
     }
+
+    public String getUsername() {
+
+        return properties.getProperty("username");
+    }
+
+    public String getPassword() {
+
+        return properties.getProperty("password");
+    }
 }

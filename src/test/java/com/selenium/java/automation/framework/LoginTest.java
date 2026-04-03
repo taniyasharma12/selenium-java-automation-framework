@@ -5,6 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utils.ExcelUtils;
+
+import java.io.IOException;
 
 public class LoginTest extends BaseTest {
 
@@ -52,18 +55,11 @@ public class LoginTest extends BaseTest {
     }
 
     // test data provider with different login scenarios
-    @DataProvider(name = "loginData")
-    public Object[][] loginData() {
 
-        Object[][] data = new Object[][]{
-                {"correct credentials", "tomsmith", "SuperSecretPassword!"},
-                {"incorrect username", "wrongUser", "SuperSecretPassword!"},
-                {"incorrect password", "tomsmith", "wrongPassword"},
-                {"both incorrect", "wrongUser", "wrongPassword"},
-                {"empty username", "", "SuperSecretPassword!"},
-                {"empty password", "tomsmith", ""}
-        };
+    @DataProvider(name = "loginData", parallel = true)
+    public Object[][] loginData() throws IOException {
 
-        return data;
+        String excelPath = "\\src\\test\\resources\\testdata.xlsx";
+        return ExcelUtils.getExcelData(excelPath, "sheet1");
     }
 }

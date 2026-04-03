@@ -8,7 +8,7 @@ import utils.ConfigReader;
 
 public class BaseTest {
 
-    // to read values from config.properties like browser and URL
+    // to read values from config.properties like browser, url etc
     protected ConfigReader configReader;
 
     // runs before each test method

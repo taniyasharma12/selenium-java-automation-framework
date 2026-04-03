@@ -14,7 +14,7 @@ import java.io.IOException;
 public class ScreenshotUtils {
 
 
-    public static void takeScreenshot(ITestResult result) throws IOException {
+    public static String takeScreenshot(ITestResult result) throws IOException {
 
         WebDriver driver = DriverManager.getDriver();
         String screenshotDir = "extent-output/screenshots/";
@@ -33,6 +33,7 @@ public class ScreenshotUtils {
 
         ExtentUtils.addScreenshotFromPath(fullPath);
 
+        return screenshotDir;
     }
 
 }

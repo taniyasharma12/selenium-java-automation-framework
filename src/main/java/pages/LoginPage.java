@@ -23,6 +23,7 @@ public class LoginPage extends BasePage {
 
     // perform login action
     public void login(String userName, String password) {
+
         sendKeys(userNameInputBox, userName);
         sendKeys(passwordInputBox, password);
         click(loginButton);
