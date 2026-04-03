@@ -34,7 +34,7 @@ public class FileUploadTest extends BaseTest {
         uploadPage = new FileUploadPage();
     }
     @Author(name = "Taniya Sharma")
-    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"}, testName = "Verify uploading file using upload button")
     public void verifyFileUpload() {
 
         String filePath = System.getProperty("user.dir") + "/test-data/sample.txt";

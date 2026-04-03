@@ -22,18 +22,18 @@ public class ScreenshotUtils {
         String fileName = result.getName() + "_status" + result.getStatus() + "_" + result.getStartMillis() + ".png";
         String fullPath = screenshotDir + fileName;
 
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(file, new File(fullPath));
+        if (driver != null) {
+            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(file, new File(fullPath));
+            } catch (IOException e) {
+
+                throw new IOException(e);
+            }
+
+            ExtentUtils.addScreenshotFromPath(fullPath);
         }
-        catch (IOException e) {
-
-            throw new IOException(e);
-        }
-
-        ExtentUtils.addScreenshotFromPath(fullPath);
-
         return screenshotDir;
     }
-
 }
+

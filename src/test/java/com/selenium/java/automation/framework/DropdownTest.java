@@ -34,7 +34,7 @@ public class DropdownTest extends BaseTest {
     }
 
     @Author(name = "Taniya Sharma")
-    @Test(dataProvider = "dropdownData", groups = {"smoke"})
+    @Test(dataProvider = "dropdownData", groups = {"smoke"}, testName = "Verify static dropdown options")
     public void verifyDropdownUsingSelect(String option) {
 
         dropdownPage.selectByVisibleText(option);
@@ -44,7 +44,7 @@ public class DropdownTest extends BaseTest {
     }
 
     @Author(name = "Taniya Sharma")
-    @Test(dataProvider = "dropdownData", groups = {"regression"})
+    @Test(dataProvider = "dropdownData", groups = {"regression"}, testName = "Verify dynamic dropdown options" )
     public void verifyDropdownUsingDynamic(String option) {
 
         dropdownPage.selectOptionDynamic(option);

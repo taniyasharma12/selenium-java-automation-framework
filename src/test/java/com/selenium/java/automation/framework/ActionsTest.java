@@ -30,9 +30,9 @@ public class ActionsTest extends BaseTest {
         actionsPage = new ActionsPage();
     }
 
-    //Test 1: Hover on first user
+    //Test 1
     @Author(name = "Taniya Sharma")
-    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"}, testName = "Hover on First User")
     public void verifyHoverOnFirstUser() {
 
         getDriver().get("https://the-internet.herokuapp.com/hovers");
@@ -43,9 +43,9 @@ public class ActionsTest extends BaseTest {
         Assert.assertTrue(actionsPage.getUserCaption(1).contains("user1"));
     }
 
-    //Test 2: Hover on all users
+    //Test 2
     @Author(name = "Taniya Sharma")
-    @Test(groups = "smoke")
+    @Test(groups = "smoke", testName = "Hover on All Users")
     public void verifyHoverOnAllUsers() {
 
         getDriver().get("https://the-internet.herokuapp.com/hovers");
@@ -58,25 +58,24 @@ public class ActionsTest extends BaseTest {
         }
     }
 
-    //Test 3: Context Click (Right Click)
+    //Test 3
     @Author(name = "Taniya Sharma")
-    @Test(groups = "regression")
+    @Test(groups = "regression", testName = "Right Click Context Menu Validation")
     public void verifyContextClick() {
 
         getDriver().get("https://the-internet.herokuapp.com/context_menu");
 
         actionsPage.rightClickOnBox();
 
-        // ✅ Handle alert here (not in page)
         String alertText = getDriver().switchTo().alert().getText();
         Assert.assertEquals(alertText, "You selected a context menu");
 
         getDriver().switchTo().alert().accept();
     }
 
-    //Test 4: Drag and Drop
+    //Test 4
     @Author(name = "Taniya Sharma")
-    @Test(groups = "smoke")
+    @Test(groups = "smoke", testName = "Drag and Drop Column Swap")
     public void verifyDragAndDrop() {
 
         getDriver().get("https://the-internet.herokuapp.com/drag_and_drop");
@@ -84,7 +83,6 @@ public class ActionsTest extends BaseTest {
         try {
             actionsPage.dragAndDrop();
         } catch (Exception e) {
-            // fallback if default fails
             actionsPage.dragAndDropUsingClickHold();
         }
 

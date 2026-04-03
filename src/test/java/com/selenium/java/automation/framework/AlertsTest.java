@@ -34,7 +34,7 @@ public class AlertsTest extends BaseTest {
 
     //Test 1: Simple Alert (OK)
     @Author(name = "Taniya Sharma")
-    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"}, testName = "JS Alert Accept Validation")
     public void verifyJsAlertAccept() {
 
         alertsPage.clickJsAlert();
@@ -49,7 +49,7 @@ public class AlertsTest extends BaseTest {
 
     //Test 2: Confirm Alert (Cancel)
     @Author(name = "Taniya Sharma")
-    @Test(groups = "smoke")
+    @Test(groups = "smoke", testName = "JS Confirm Dismiss Validation")
     public void verifyJsConfirmDismiss() {
 
         alertsPage.clickJsConfirm();
@@ -64,7 +64,7 @@ public class AlertsTest extends BaseTest {
 
     // Test 3: Prompt Alert (Send Text)
     @Author(name = "Taniya Sharma")
-    @Test(groups = "regression")
+    @Test(groups = "regression", testName = "JS Prompt Input Validation")
     public void verifyJsPromptInput() {
 
         alertsPage.clickJsPrompt();
